@@ -5,12 +5,22 @@ class Game
     end
     def play 
         @area.display
-        puts 'select color for guess with space seperate'
-        get_colors
+        puts "1 : multiplayer"
+        puts "2 : single"
+        answer = ''
+        until answer == '1' || answer == '2'
+            answer = gets.chomp.to_str
+        end
+        if answer == 1
+            puts 'select color for guess with space seperate'
+            get_colors
+        else 
+            @colors = @area.colors.to_a.sample(4).to_h
+        end
         get_guess_ok        
         system 'cls' or system 'clear'
         @area.display
-        puts '* there are right letter and right place'
+        puts '/ there are right letter and right place'
         puts 'o there are right letter but wrong place'
         puts 'select color for guess with space seperate'
         @guess = []

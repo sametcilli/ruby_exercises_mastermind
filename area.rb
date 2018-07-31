@@ -12,12 +12,12 @@ class Area
         puts '___________________________________________________________'
     end
     def display_colors_row(colors)
-        puts '|   ' + colors.join('    |    ') + '    |'
+        puts '|   ' + colors.values().to_a.join('    |    ') + '    |'
     end
     def display_guess_row(colors, guess)
-        same = colors.select.with_index{|a, i| guess[i] == a }.length
+        same = colors.select.with_index{|a, i| guess[i] == a[0] }.length
         similar = colors.select{|a| guess.include?(a)}.length - same
-        puts '|   ' + guess.join('    |    ') + '    |    ' + (" * " * same) + (" o " * similar) + (" . " * (guess.length - (similar+same)))
+        puts '|   ' + guess.join('    |    ') + '    |    ' + (" / " * same) + (" o " * similar) + (" . " * (guess.length - (similar+same)))
     end
 
 end
